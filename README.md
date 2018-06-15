@@ -39,7 +39,7 @@ This piece of code runs on the pendulum-v0 environment provided in the 'openAI' 
 	- Consist of all the global variables that govern the algorithm.
 	- Also defines a function that computes the one step look ahead estimate using target critic and target actor
 
-- main.py
-        - Spawns an actorCritic object and performs the necessary interactions with the environment over several episodes
+- Main
+	- Spawns an actorCritic object and performs the necessary interactions with the environment over several episodes
 
 
