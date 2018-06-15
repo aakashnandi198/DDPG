@@ -8,7 +8,7 @@ Inspired from ["Continuous Control with deep reinforcement learning"](https://ar
 4. Tom Erez
 5. Yuval Tassa
 6. David Silver
-7. Daan Wiestra
+7. Daan Wierstra
 
 ## Acknowledgements
 
