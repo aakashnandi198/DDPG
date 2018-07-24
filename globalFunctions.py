@@ -11,11 +11,11 @@ root_logdir = "tf_logs"
 logdir = "{}/run-{}/".format(root_logdir, now)
 
 # general global variables
-restore = False
-train = True
+restore = True
+train = False
 archive = "./tmp/my_model.ckpt"
 saveAfter = 50
-displayEnv = False
+displayEnv = True
 miniBatchSize = 64
 warmUpSteps = 1000
 
@@ -26,8 +26,9 @@ variance = 0.4
 varianceDecay = 1
 gamma = 0.99
 tau = 0.001
-numEpisodes = 1000
-episodeLength = 200
+numEpisodes = 100000
+episodeLength = 600
+experienceLength = 300000
 trainsPerEpisodeFraction = 0.1
 renderEvaluationAfter = 100
 

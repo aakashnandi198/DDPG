@@ -14,7 +14,7 @@ class ActorCritic:
     def __init__(self, env, sess):
         self.env = env
         self.sess = sess
-        self.experience = collections.deque(maxlen=gf.episodeLength*gf.numEpisodes)
+        self.experience = collections.deque(maxlen=gf.experienceLength)
 
         # seed random number
         random.seed()
