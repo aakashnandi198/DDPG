@@ -11,11 +11,17 @@ root_logdir = "tf_logs"
 logdir = "{}/run-{}/".format(root_logdir, now)
 
 # general global variables
-restore = True
-train = False
-archive = "./tmp/my_model.ckpt"
+# -1 restoration off
+#  0 restore latest model
+#num restore snapshot-num from snapshot database
+restore = -1
+
+train = True
+archive = "./tmp/latest_model.ckpt"
+snapshotDB = "./history/snapshot-"
 saveAfter = 50
-displayEnv = True
+snapshotAfter = 200
+displayEnv = False
 miniBatchSize = 64
 warmUpSteps = 1000
 
@@ -39,7 +45,6 @@ criticConfig = [400, 300]
 #---------------------------------------------#
 #                Misc functions               #
 #---------------------------------------------#
-
 
 # function to compute one step TD estimate
 def computeTDEstimate(actor, critic, miniExperience):

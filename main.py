@@ -2,6 +2,7 @@ import gym
 import tensorflow as tf
 from tqdm import *
 from time import sleep
+import CustomWalker
 
 import actorCritic as agent
 import globalFunctions as gf
@@ -9,7 +10,7 @@ import globalFunctions as gf
 
 def main():
     # generate environment
-    env = gym.make('Pendulum-v0')
+    env = gym.make('CustomWalker-v0')
 
     # spawn a tensorflow session and a saver
     sess = tf.Session()
@@ -22,10 +23,13 @@ def main():
 
     # saver created after construction phase
     saver = tf.train.Saver()
+    historySaver = tf.train.Saver(max_to_keep=1000)
 
     # restore model from archive
-    if gf.restore:
+    if gf.restore == 0:
         saver.restore(sess, gf.archive)
+    elif gf.restore > 0:
+        saver.restore(sess, gf.snapshotDB+str(gf.restore))
     else:
         sess.run(init)
 
@@ -89,6 +93,8 @@ def main():
             # save the model
             if i % gf.saveAfter == 0:
                 saver.save(sess, gf.archive)
+            if i % gf.snapshotAfter == 0:
+                historySaver.save(sess,'./history/snapshot',global_step=i,write_meta_graph=False)
 
     ac.fileWriter.close()
     sess.close()
